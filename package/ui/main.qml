@@ -16,6 +16,7 @@ import org.kde.latte.components 1.0 as LatteComponents
 
 LatteComponents.IndicatorItem{
     id: root
+    needsIconColors: true
     extraMaskThickness: reversedEnabled && glowEnabled ? 1.7 * (factor * indicator.maxIconSize) : 0
 
     enabledForApplets: indicator && indicator.configuration ? indicator.configuration.enabledForApplets : true
@@ -32,7 +33,7 @@ LatteComponents.IndicatorItem{
 
     property real textColorBrightness: colorBrightness(indicator.palette.textColor)
 
-    property color isActiveColor: indicator.palette.buttonFocusColor
+    property color isActiveColor: indicator.iconGlowColor
     property color minimizedColor: {
         if (minimizedTaskColoredDifferently) {
             return (textColorBrightness > 127.5 ? Qt.darker(indicator.palette.textColor, 1.7) : Qt.lighter(indicator.palette.textColor, 7));
